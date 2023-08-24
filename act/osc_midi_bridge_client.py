@@ -3,13 +3,14 @@ from __future__ import annotations
 from pythonosc import udp_client
 from pythonosc import osc_bundle_builder
 from pythonosc import osc_message_builder
-from act_playground import dev_temporal_context
+
+from act import temporal_context
 
 
 class OscMidiBridgeClient:
     def __init__(
         self,
-        tctx: dev_temporal_context.TemporalContext,
+        tctx: temporal_context.TemporalContext,
         client: udp_client.SimpleUDPClient,
         chan: int = 0,
     ) -> None:
