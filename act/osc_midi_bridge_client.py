@@ -8,6 +8,10 @@ from act import temporal_context
 
 
 class OscMidiBridgeClient:
+    """
+    in the future, the client file will be auto-generated from *.scd.
+    """
+
     def __init__(
         self,
         tctx: temporal_context.TemporalContext,
