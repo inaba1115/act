@@ -117,7 +117,18 @@ files = [
 docs = ["furo (>=2023.7.26)", "proselint (>=0.13)", "sphinx (>=7.1.1)", "sphinx-autodoc-typehints (>=1.24)"]
 test = ["appdirs (==1.4.4)", "covdefaults (>=2.3)", "pytest (>=7.4)", "pytest-cov (>=4.1)", "pytest-mock (>=3.11.1)"]
 
+[[package]]
+name = "python-osc"
+version = "1.8.3"
+description = "Open Sound Control server and client implementations in pure Python"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "python-osc-1.8.3.tar.gz", hash = "sha256:a5ce1ba56c8d82df51cb3f2946b5dd33a70522791acc4b8564e62d2b20ad9caa"},
+    {file = "python_osc-1.8.3-py3-none-any.whl", hash = "sha256:6fa7e5cf7690057712c26e5f67a747126e6a5f481a40792aad0f25ac3edee815"},
+]
+
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "0f385dcc6ace553fc1ca5e89dc13d923f40b08c30bb8a16975f9f659c11cb586"
+content-hash = "42b46ac474b2022723ff6f5ca4a473920f71abcdb4fde5be77bb181b31cfdcf2"
