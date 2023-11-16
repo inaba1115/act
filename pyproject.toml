@@ -9,9 +9,11 @@ readme = "README.md"
 python = "^3.11"
 python-osc = "^1.8.3"
 
-
 [tool.poetry.group.dev.dependencies]
 black = "^23.7.0"
+
+[tool.black]
+line-length = 120
 
 [build-system]
 requires = ["poetry-core"]
