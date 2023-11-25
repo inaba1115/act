@@ -29,6 +29,21 @@ _NOTE_KIND_MAP = {
     "B": 11,
 }
 
+_NOTE_KIND_STR_MAP = {
+    0: "C",
+    1: "C#/Db",
+    2: "D",
+    3: "D#/Eb",
+    4: "E",
+    5: "F",
+    6: "F#/Gb",
+    7: "G",
+    8: "G#/Ab",
+    9: "A",
+    10: "A#/Bb",
+    11: "B",
+}
+
 
 class NoteKind(IntEnum):
     C = 0
@@ -49,6 +64,9 @@ class NoteKind(IntEnum):
         if literal not in _NOTE_KIND_MAP:
             raise
         return NoteKind(_NOTE_KIND_MAP[literal])
+
+    def __str__(self) -> str:
+        return _NOTE_KIND_STR_MAP[self]
 
     def transpose(self, n: int) -> NoteKind:
         return NoteKind((self + n) % 12)
@@ -91,6 +109,10 @@ class Note:
     def __repr__(self) -> str:
         kind, octave = self._to_kind_octave()
         return f"Note({self.midi_number}, {kind.name}, {octave})"
+
+    def __str__(self) -> str:
+        kind, octave = self._to_kind_octave()
+        return f"{kind}{octave}"
 
     def __eq__(self, other: Note) -> bool:
         if not isinstance(other, Note):
