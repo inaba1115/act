@@ -87,6 +87,8 @@ class Note:
     @classmethod
     def parse(cls, literal: str) -> Note:
         m = _NOTE_RE.match(literal)
+        if m is None:
+            raise
         kind = NoteKind.parse(m.group(1))
         octave = int(m.group(2))
         midi_number = cls._to_midi_number(kind, octave)
