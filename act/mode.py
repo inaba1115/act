@@ -111,6 +111,6 @@ class Mode:
     def print_similar_modes(self, threshold_low: float = 0.0, threshold_high: float = 1.0) -> None:
         xs = self.similar_modes(threshold_low, threshold_high)
         for x in xs:
-            v0 = "{:.2f}".format(x[0])
-            v1 = str(x[1])
-            print(f"{v0}\t{v1}")
+            y0 = "{:.2f}".format(x[0])
+            y1 = str(x[1])
+            print(f"{y0}\t{y1}")
