@@ -5,22 +5,21 @@ from act.note import NoteKind
 from termcolor import colored
 
 
-TUNING = {
-    1: NoteKind.parse("E"),
-    2: NoteKind.parse("B"),
-    3: NoteKind.parse("G"),
-    4: NoteKind.parse("D"),
-    5: NoteKind.parse("A"),
-    6: NoteKind.parse("E"),
-}
+TUNING = [
+    NoteKind.parse("E"),
+    NoteKind.parse("B"),
+    NoteKind.parse("G"),
+    NoteKind.parse("D"),
+    NoteKind.parse("A"),
+    NoteKind.parse("E"),
+]
 FRETS = 12
 TAB_WIDTH = 6
 
 
 def print_guitar(root: NoteKind, intervals: list[int]) -> None:
-    notes = Mode(root, intervals)._scale_note_kind
-    for string in range(1, 7):
-        open_string = TUNING[string]
+    notes = Mode(root, intervals).scale_note_kind()
+    for open_string in TUNING:
         for fret in range(FRETS + 1):
             note = open_string.transpose(fret)
             if note is root:
@@ -29,7 +28,7 @@ def print_guitar(root: NoteKind, intervals: list[int]) -> None:
                 s = colored(str(note).ljust(TAB_WIDTH), "light_blue", attrs=["reverse"])
             else:
                 s = str(fret).ljust(TAB_WIDTH)
-            print("|{}".format(s), end="")
+            print(f"|{s}", end="")
         print("|")
 
 
