@@ -68,6 +68,9 @@ class NoteKind(IntEnum):
     def __str__(self) -> str:
         return _NOTE_KIND_STR_MAP[self]
 
+    def __repr__(self) -> str:
+        return self.__str__()
+
     def transpose(self, n: int) -> NoteKind:
         return NoteKind((self + n) % 12)
 

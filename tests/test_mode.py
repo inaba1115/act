@@ -47,3 +47,24 @@ class TestMode(unittest.TestCase):
     def test_sample_notes(self):
         m = Mode.parse("C Minor")
         self.assertEqual(len(m.sample_notes(3, -1, 1, 1)), 1)
+
+    def test_similarity(self):
+        a = Mode.parse("C Whole Tone")
+        b = Mode.parse("D Whole Tone")
+        self.assertAlmostEqual(a.similarity(b), 1.0)
+
+        a = Mode.parse("C Major")
+        b = Mode.parse("C Minor")
+        self.assertAlmostEqual(a.similarity(b), 4 / 10)
+
+        a = Mode(NoteKind.parse("C"), [0, 4, 7])
+        b = Mode.parse("C Major")
+        self.assertAlmostEqual(a.similarity(b), 3 / 7)
+
+        a = Mode(NoteKind.C, [0, 4, 7])
+        b = Mode.parse("C Minor")
+        self.assertAlmostEqual(a.similarity(b), 2 / 8)
+
+    def test_similar_modes(self):
+        a = Mode.parse("C Major")
+        self.assertEqual(len(a.similar_modes(1.0)), 8)

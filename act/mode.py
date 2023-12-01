@@ -47,17 +47,30 @@ SCALES = {
 
 
 class Mode:
-    def __init__(self, root: NoteKind, scale: list[int]) -> None:
+    def __init__(self, root: NoteKind, scale: list[int], literal: str = "") -> None:
         self._root = root
         self._scale = scale
         self._scale_note_kind = [root.transpose(i) for i in scale]
+        self._literal = literal
 
     @classmethod
     def parse(cls, literal: str) -> Mode:
         xs = literal.split(" ")
         root = NoteKind.parse(xs[0])
         scale = SCALES[" ".join(xs[1:])]
-        return Mode(root, scale)
+        return Mode(root, scale, literal)
+
+    def __str__(self) -> str:
+        if self._literal != "":
+            return f"{self._literal}\t{self._scale}\t{self._scale_note_kind}"
+        else:
+            return f"Mode({self._root}, {self._scale}, {self._scale_note_kind})"
+
+    def scale_note_kind(self) -> list[NoteKind]:
+        return self._scale_note_kind
+
+    def literal(self) -> str:
+        return self._literal
 
     def nth_note(self, octave: int, nth: int) -> Note:
         octave += nth // len(self._scale)
@@ -79,3 +92,25 @@ class Mode:
     def sample_notes(self, octave: int, low_nth: int, high_nth: int, k: int) -> list[Note]:
         nths = random.sample(list(range(low_nth, high_nth + 1)), k=k)
         return self.nth_notes(octave, nths)
+
+    def similarity(self, other: Mode) -> float:
+        a = set(self.scale_note_kind())
+        b = set(other.scale_note_kind())
+        return len(a & b) / len(a | b)
+
+    def similar_modes(self, threshold_low: float = 0.0, threshold_high: float = 1.0) -> list[tuple[float, Mode]]:
+        ret = []
+        for root in NoteKind:
+            for scale_name, _ in SCALES.items():
+                other = Mode.parse(f"{root} {scale_name}")
+                similarity = self.similarity(other)
+                if threshold_low <= similarity <= threshold_high:
+                    ret.append((similarity, other))
+        return sorted(ret, key=lambda x: x[0], reverse=True)
+
+    def print_similar_modes(self, threshold_low: float = 0.0, threshold_high: float = 1.0) -> None:
+        xs = self.similar_modes(threshold_low, threshold_high)
+        for x in xs:
+            v0 = "{:.2f}".format(x[0])
+            v1 = str(x[1])
+            print(f"{v0}\t{v1}")
