@@ -1,8 +1,9 @@
 from __future__ import annotations
 
+from termcolor import colored
+
 from act.mode import Mode
 from act.note import NoteKind
-from termcolor import colored
 
 
 TUNING = [

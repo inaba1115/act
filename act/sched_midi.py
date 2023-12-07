@@ -20,7 +20,7 @@ def note_off(port: typing.Any, chan: int, note: Note):
 
 
 class SchedMidi:
-    def __init__(self, port, chan) -> None:
+    def __init__(self, port: typing.Any, chan: int) -> None:
         self._s = sched.scheduler(time.monotonic, time.sleep)
         self._port = port
         self._chan = chan
