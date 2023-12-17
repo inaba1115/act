@@ -10,7 +10,7 @@ from act.temporal_context import TemporalContext
 from act.tidal_tracker import TidalTracker
 
 
-udp_client = SimpleUDPClient("127.0.0.1", 57120)
+udp_client = SimpleUDPClient("127.0.0.1", 33333)
 drums_client = OscMidiBridgeClient(udp_client, 0)
 piano_client = OscMidiBridgeClient(udp_client, 1)
 

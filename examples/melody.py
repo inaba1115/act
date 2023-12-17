@@ -18,7 +18,7 @@ piano_client = OscMidiBridgeClient(udp_client, 0)
 def main():
     bpm = BPM(130)
     mode = Mode.parse("A Minor")
-    
+
     notes = mode.nth_notes(3, [random.randint(0, 10) for _ in range(16)])
     durs = np.array([random.randint(1, 8) for _ in range(16)]) * bpm.div(16)
     melody = list(zip(notes, durs))
