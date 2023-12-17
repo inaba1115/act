@@ -82,7 +82,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "float" ],
-					"patching_rect" : [ 100.0, 212.0, 47.0, 22.0 ],
+					"patching_rect" : [ 87.0, 212.0, 47.0, 22.0 ],
 					"text" : "* 1000."
 				}
 
@@ -105,9 +105,9 @@
 					"maxclass" : "newobj",
 					"numinlets" : 1,
 					"numoutlets" : 4,
-					"outlettype" : [ "int", "int", "int", "float" ],
+					"outlettype" : [ "int", "int", "float", "int" ],
 					"patching_rect" : [ 39.0, 178.0, 91.0, 22.0 ],
-					"text" : "unpack 0 0 0 0."
+					"text" : "unpack 0 0 0. 0"
 				}
 
 			}
@@ -200,28 +200,28 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-13", 1 ],
-					"source" : [ "obj-16", 2 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-13", 0 ],
 					"source" : [ "obj-16", 1 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-17", 3 ],
+					"destination" : [ "obj-13", 0 ],
 					"source" : [ "obj-16", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-21", 0 ],
+					"destination" : [ "obj-17", 3 ],
 					"source" : [ "obj-16", 3 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-21", 0 ],
+					"source" : [ "obj-16", 2 ]
 				}
 
 			}
