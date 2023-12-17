@@ -11,7 +11,7 @@ from act.osc_midi_bridge_client import OscMidiBridgeClient
 from act.temporal_context import TemporalContext
 
 
-udp_client = SimpleUDPClient("127.0.0.1", 5005)
+udp_client = SimpleUDPClient("127.0.0.1", 33333)
 piano_client = OscMidiBridgeClient(udp_client, 0)
 
 
