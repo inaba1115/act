@@ -6,10 +6,10 @@ MIDIClient.destinations;
 
 (
 OSCdef(\midi, {|msg, time|
-	var chan = msg[1];
-	var note = msg[2];
-	var velo = msg[3];
-	var sus = msg[4];
+	var note = msg[1];
+	var velo = msg[2];
+	var sus = msg[3];
+	var chan = msg[4];
 	SystemClock.schedAbs(time, {
 		~midi.noteOn(chan, note, velo);
 	});
