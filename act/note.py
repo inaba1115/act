@@ -59,17 +59,14 @@ class NoteKind(IntEnum):
     AsBb = 10
     B = 11
 
+    def __str__(self) -> str:
+        return _NOTE_KIND_STR_MAP[self]
+
     @classmethod
     def parse(cls, literal: str) -> NoteKind:
         if literal not in _NOTE_KIND_MAP:
             raise
         return NoteKind(_NOTE_KIND_MAP[literal])
-
-    def __str__(self) -> str:
-        return _NOTE_KIND_STR_MAP[self]
-
-    def __repr__(self) -> str:
-        return self.__str__()
 
     def transpose(self, n: int) -> NoteKind:
         return NoteKind((self + n) % 12)
@@ -86,6 +83,23 @@ class Note:
         if midi_number < 0 or 127 < midi_number:
             raise
         self.midi_number = midi_number
+
+    def __repr__(self) -> str:
+        class_name = type(self).__name__
+        kind, octave = self._to_kind_octave()
+        return f"{class_name}(midi_number={self.midi_number!r}, kind={kind!r}, octave={octave!r})"
+
+    def __str__(self) -> str:
+        kind, octave = self._to_kind_octave()
+        return f"{kind}{octave}"
+
+    def __eq__(self, other: Note) -> bool:
+        if not isinstance(other, Note):
+            return False
+        return self.midi_number == other.midi_number
+
+    def __hash__(self) -> int:
+        return hash(self.midi_number)
 
     @classmethod
     def parse(cls, literal: str) -> Note:
@@ -110,22 +124,6 @@ class Note:
         kind = NoteKind(self.midi_number % 12)
         octave = int(self.midi_number / 12) - 2
         return kind, octave
-
-    def __repr__(self) -> str:
-        kind, octave = self._to_kind_octave()
-        return f"Note({self.midi_number}, {kind.name}, {octave})"
-
-    def __str__(self) -> str:
-        kind, octave = self._to_kind_octave()
-        return f"{kind}{octave}"
-
-    def __eq__(self, other: Note) -> bool:
-        if not isinstance(other, Note):
-            return False
-        return self.midi_number == other.midi_number
-
-    def __hash__(self) -> int:
-        return hash(self.midi_number)
 
     def kind(self) -> NoteKind:
         kind, _ = self._to_kind_octave()

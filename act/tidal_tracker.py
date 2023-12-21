@@ -10,6 +10,10 @@ class TidalTracker:
     def __init__(self, commands: typing.Any) -> None:
         self._commands = commands
 
+    def __repr__(self) -> str:
+        class_name = type(self).__name__
+        return f"{class_name}(commands={self._commands!r})"
+
     def run(
         self,
         tctx: TemporalContext,

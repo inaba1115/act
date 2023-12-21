@@ -11,6 +11,10 @@ class TemporalContext:
         self._delay = delay
         self._assert_delta = assert_delta
 
+    def __repr__(self) -> str:
+        class_name = type(self).__name__
+        return f"{class_name}(delay={self._delay!r}, assert_delta={self._assert_delta!r})"
+
     def init(self) -> None:
         self._vtime = time.time()
         self._initial_vtime = self._vtime

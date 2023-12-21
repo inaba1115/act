@@ -7,7 +7,8 @@ from act.note import NoteKind
 def main():
     m = Mode(NoteKind.parse("C"), [0, 4, 7])
     print(m)
-    m.print_similar_modes(0.4)
+    for x, y in m.similar_modes(0.4):
+        print(f"{x}\t{y}")
 
 
 if __name__ == "__main__":
