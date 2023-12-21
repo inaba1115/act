@@ -53,18 +53,19 @@ class Mode:
         self._scale_note_kind = [root.transpose(i) for i in scale]
         self._literal = literal
 
+    def __repr__(self) -> str:
+        class_name = type(self).__name__
+        return f"{class_name}(root={self._root!r}, scale={self._scale!r}, literal={self._literal!r})"
+
+    def __str__(self) -> str:
+        return self._literal if self._literal != "" else repr(self)
+
     @classmethod
     def parse(cls, literal: str) -> Mode:
         xs = literal.split(" ")
         root = NoteKind.parse(xs[0])
         scale = SCALES[" ".join(xs[1:])]
         return Mode(root, scale, literal)
-
-    def __str__(self) -> str:
-        if self._literal != "":
-            return f"{self._literal}\t{self._scale}\t{self._scale_note_kind}"
-        else:
-            return f"Mode({self._root}, {self._scale}, {self._scale_note_kind})"
 
     def scale_note_kind(self) -> list[NoteKind]:
         return self._scale_note_kind
@@ -107,10 +108,3 @@ class Mode:
                 if threshold_low <= similarity <= threshold_high:
                     ret.append((similarity, other))
         return sorted(ret, key=lambda x: x[0], reverse=True)
-
-    def print_similar_modes(self, threshold_low: float = 0.0, threshold_high: float = 1.0) -> None:
-        xs = self.similar_modes(threshold_low, threshold_high)
-        for x in xs:
-            y0 = "{:.2f}".format(x[0])
-            y1 = str(x[1])
-            print(f"{y0}\t{y1}")
