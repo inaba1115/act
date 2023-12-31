@@ -3,19 +3,16 @@ from __future__ import annotations
 import random
 
 import numpy as np
-from pythonosc.udp_client import SimpleUDPClient
 
 from act.bpm import BPM
 from act.mode import Mode
-from act.osc_midi_bridge_client import OscMidiBridgeClient
+from act.midi_over_osc import MidiOverOscClient
 from act.temporal_context import TemporalContext
 
 
-udp_client = SimpleUDPClient("127.0.0.1", 33333)
-piano_client = OscMidiBridgeClient(udp_client, 0)
-
-
 def main():
+    piano_client = MidiOverOscClient("127.0.0.1", 33333)
+
     bpm = BPM(130)
     mode = Mode.parse("A Minor")
 
