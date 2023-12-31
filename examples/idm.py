@@ -1,18 +1,15 @@
 from __future__ import annotations
 
-from pythonosc.udp_client import SimpleUDPClient
-
 from act.bpm import BPM
 from act.mode import Mode
 from act.note import Note
-from act.osc_midi_bridge_client import OscMidiBridgeClient
+from act.midi_over_osc import MidiOverOscClient
 from act.temporal_context import TemporalContext
 from act.tidal_tracker import TidalTracker
 
 
-udp_client = SimpleUDPClient("127.0.0.1", 33333)
-drums_client = OscMidiBridgeClient(udp_client, 0)
-piano_client = OscMidiBridgeClient(udp_client, 1)
+drums_client = MidiOverOscClient("127.0.0.1", 33333)
+piano_client = MidiOverOscClient("127.0.0.1", 33334)
 
 
 def bd_fn(ctx, *args):
