@@ -1,6 +1,6 @@
 import unittest
 
-from act.note import NoteKind, Note
+from act.note import Note, NoteKind
 
 
 class TestNoteKind(unittest.TestCase):

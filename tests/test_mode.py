@@ -1,7 +1,7 @@
 import unittest
 
 from act.mode import Mode
-from act.note import NoteKind, Note
+from act.note import Note, NoteKind
 
 
 class TestMode(unittest.TestCase):

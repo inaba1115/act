@@ -2,8 +2,7 @@ from __future__ import annotations
 
 import random
 
-from act.note import NoteKind, Note
-
+from act.note import Note, NoteKind
 
 SCALES = {
     "8-Tone Spanish": [0, 1, 3, 4, 5, 6, 8, 10],

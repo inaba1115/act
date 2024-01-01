@@ -1,12 +1,11 @@
 from __future__ import annotations
 
 from act.bpm import BPM
+from act.midi_over_osc_client import MidiOverOscClient
 from act.mode import Mode
 from act.note import Note
-from act.midi_over_osc import MidiOverOscClient
 from act.temporal_context import TemporalContext
 from act.tidal_tracker import TidalTracker
-
 
 drums_client = MidiOverOscClient("127.0.0.1", 33333)
 piano_client = MidiOverOscClient("127.0.0.1", 33334)
