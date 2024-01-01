@@ -9,8 +9,6 @@ class MidiOverOscClient:
         self._chan = chan
 
     def send_midi(self, note: int, velo: int, dur: float, ts: float) -> None:
-        if note < 0:
-            return
         bundle = osc_bundle_builder.OscBundleBuilder(ts)  # type: ignore
         msg = osc_message_builder.OscMessageBuilder(address="/midi")
         msg.add_arg(note)
