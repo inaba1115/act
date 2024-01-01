@@ -3,7 +3,6 @@ from __future__ import annotations
 import re
 from enum import IntEnum
 
-
 _NOTE_KIND_MAP = {
     "C": 0,
     "C#": 1,

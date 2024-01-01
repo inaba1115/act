@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-from pythonosc import udp_client
-from pythonosc import osc_bundle_builder
-from pythonosc import osc_message_builder
+from pythonosc import osc_bundle_builder, osc_message_builder, udp_client
 
 
 class MidiOverOscClient:

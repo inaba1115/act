@@ -5,7 +5,6 @@ from termcolor import colored
 from act.mode import Mode
 from act.note import NoteKind
 
-
 TUNING = [
     NoteKind.parse("E"),
     NoteKind.parse("B"),

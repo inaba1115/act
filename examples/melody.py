@@ -5,8 +5,8 @@ import random
 import numpy as np
 
 from act.bpm import BPM
+from act.midi_over_osc_client import MidiOverOscClient
 from act.mode import Mode
-from act.midi_over_osc import MidiOverOscClient
 from act.temporal_context import TemporalContext
 
 
