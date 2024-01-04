@@ -62,7 +62,7 @@ def main():
             " ".join([f"p:{n}" for n in mode1.sample_notes(3, 0, 14, 11)]),
             "_ p:{}@2".format(to_chord_str(mode2.sample_notes(2, 0, 18, 3))),
         ]
-        tt.run(tctx, pat, bpm.bar(), 1)
+        tt.run(tctx, pat, bpm.div(1), 1)
 
     for i in range(6):
         pat = [
@@ -71,7 +71,7 @@ def main():
             " ".join([f"p:{n}" for n in mode1.sample_notes(3, 0, 14, 11)]),
             "_ p:{}@4".format(to_chord_str(mode3.sample_notes(2, 0, 18, 3))),
         ]
-        tt.run(tctx, pat, bpm.bar(), 1)
+        tt.run(tctx, pat, bpm.div(1), 1)
 
 
 if __name__ == "__main__":
