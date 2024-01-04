@@ -13,8 +13,5 @@ class BPM:
     def __str__(self) -> str:
         return str(self._bpm)
 
-    def bpm(self) -> float:
-        return self._bpm
-
     def div(self, n: float) -> float:
         return self._sec_per_bar / n

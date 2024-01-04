@@ -4,12 +4,6 @@ from act.bpm import BPM
 
 
 class TestBPM(unittest.TestCase):
-    def test_bpm(self):
-        self.assertAlmostEqual(BPM(80).bpm(), 80, delta=0.01)
-        self.assertAlmostEqual(BPM(120).bpm(), 120, delta=0.01)
-        self.assertAlmostEqual(BPM(145).bpm(), 145, delta=0.01)
-        self.assertAlmostEqual(BPM(180).bpm(), 180, delta=0.01)
-
     def test_div(self):
         self.assertAlmostEqual(BPM(80).div(1), 3, delta=0.01)
         self.assertAlmostEqual(BPM(80).div(1.5), 2, delta=0.01)
