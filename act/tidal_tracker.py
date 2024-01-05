@@ -20,19 +20,12 @@ class TidalTracker:
         sequences: list[str],
         duration: float,
         repeats: int,
-        is_parallel: bool = True,
     ) -> None:
         asts = [ASTBar.parse(sequence, 0, duration) for sequence in sequences]
-        if is_parallel:
-            for i in range(repeats):
-                for ast in asts:
-                    ast.eval(tctx, self._commands)
-                tctx.sleep(duration)
-        else:
-            for i in range(repeats):
-                for ast in asts:
-                    ast.eval(tctx, self._commands)
-                    tctx.sleep(duration)
+        for i in range(repeats):
+            for ast in asts:
+                ast.eval(tctx, self._commands)
+            tctx.sleep(duration)
 
 
 class ASTBar:
